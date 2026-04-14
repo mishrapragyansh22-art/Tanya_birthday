@@ -1,0 +1,658 @@
+/* ===================================================
+   TANYA'S BIRTHDAY — STYLE
+   Soft, emotional, minimal aesthetic
+   =================================================== */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Palette */
+  --pink-soft: #f5d5d5;
+  --pink-light: #fce4ec;
+  --pink-blush: #f8bbd0;
+  --red-soft: #e57373;
+  --beige: #f5f0e8;
+  --beige-dark: #ede5d8;
+  --white: #fffaf7;
+  --text-dark: #4a3636;
+  --text-medium: #6b5252;
+  --text-light: #8a7070;
+  --overlay-dark: rgba(30, 20, 20, 0.4);
+  --overlay-blur: 2px;
+  --glow-color: rgba(255, 235, 230, 0.15);
+
+  /* Typography */
+  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Cormorant Garamond', 'Georgia', serif;
+
+  /* Sizing */
+  --letter-max-width: 680px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: var(--white);
+  overflow-x: hidden;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+/* ===================================================
+   LANDING SCREEN
+   =================================================== */
+.landing {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--pink-light) 0%, var(--white) 50%, var(--pink-soft) 100%);
+  transition: opacity 1.2s ease, filter 1.2s ease, transform 1.2s ease;
+  will-change: opacity, filter, transform;
+}
+
+.landing.fade-out {
+  opacity: 0;
+  filter: blur(12px);
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.landing__content {
+  text-align: center;
+  animation: landingAppear 1.6s ease-out both;
+}
+
+.landing__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 5vw, 3.2rem);
+  color: var(--text-medium);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3em;
+  opacity: 0;
+  animation: textFadeUp 1.2s ease-out 0.3s forwards;
+}
+
+.landing__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  color: var(--red-soft);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: textFadeUp 1.2s ease-out 0.7s forwards;
+}
+
+.heart {
+  display: inline-block;
+  animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+@keyframes landingAppear {
+  from { transform: scale(0.96); }
+  to   { transform: scale(1); }
+}
+
+@keyframes textFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15%      { transform: scale(1.15); }
+  30%      { transform: scale(1); }
+  45%      { transform: scale(1.1); }
+  60%      { transform: scale(1); }
+}
+
+/* ===================================================
+   MAIN WEBSITE
+   =================================================== */
+.main {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 1s ease 0.4s;
+}
+
+.main.visible {
+  opacity: 1;
+}
+
+/* ===================================================
+   FLOATING PARTICLES CANVAS
+   =================================================== */
+.particles-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===================================================
+   BACKGROUND SLIDESHOW
+   =================================================== */
+.slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.slideshow__track {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  will-change: transform;
+}
+
+.slideshow__track img {
+  height: 100vh;
+  width: auto;
+  min-width: 350px;
+  object-fit: cover;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.slideshow__overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at center, var(--glow-color) 0%, transparent 70%),
+    var(--overlay-dark);
+  backdrop-filter: blur(var(--overlay-blur));
+  -webkit-backdrop-filter: blur(var(--overlay-blur));
+  z-index: 1;
+}
+
+@keyframes slideshow {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ===================================================
+   LETTER BOX — CTA Card
+   =================================================== */
+.letter-box {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 44px 56px;
+  cursor: pointer;
+  border-radius: 8px;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.006) 2px,
+      rgba(0,0,0,0.006) 4px
+    ),
+    linear-gradient(
+      170deg,
+      #f7f1e7 0%,
+      var(--beige) 40%,
+      var(--beige-dark) 100%
+    );
+  border: 1px solid rgba(200, 180, 160, 0.35);
+  box-shadow:
+    0 6px 30px rgba(80, 50, 40, 0.12),
+    0 2px 8px rgba(80, 50, 40, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0;
+  transform: translateY(20px);
+  /* visibility set by JS */
+}
+
+.letter-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.letter-box:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 12px 44px rgba(80, 50, 40, 0.18),
+    0 4px 14px rgba(80, 50, 40, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.letter-box:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.letter-box__icon {
+  font-size: 2.8rem;
+  line-height: 1;
+  animation: envelopeFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes envelopeFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.letter-box__text {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 3vw, 1.5rem);
+  font-weight: 500;
+  color: var(--text-dark);
+  letter-spacing: 0.02em;
+}
+
+.letter-box__hint {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  opacity: 0.7;
+}
+
+/* ===================================================
+   LETTER MODAL
+   =================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 12, 12, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  pointer-events: none;
+  opacity: 0;
+  transition: background 0.6s ease,
+              backdrop-filter 0.6s ease,
+              -webkit-backdrop-filter 0.6s ease,
+              opacity 0.6s ease;
+}
+
+.modal-overlay.open {
+  background: rgba(20, 12, 12, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.modal {
+  position: relative;
+  width: 92vw;
+  max-width: 700px;
+  max-height: 96vh;
+  transform: scale(0.92) translateY(20px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.5s ease;
+}
+
+.modal-overlay.open .modal {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 10;
+  background: rgba(180,155,130,0.1);
+  border: 1px solid rgba(180,155,130,0.2);
+  font-size: 1rem;
+  color: var(--text-medium);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.modal__close:hover {
+  background: rgba(0,0,0,0.06);
+  color: var(--text-dark);
+}
+
+.modal__letter {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.008) 2px,
+      rgba(0,0,0,0.008) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(0,0,0,0.005) 3px,
+      rgba(0,0,0,0.005) 6px
+    ),
+    linear-gradient(
+      170deg,
+      #f7f1e7 0%,
+      var(--beige) 30%,
+      var(--beige-dark) 70%,
+      #ece3d4 100%
+    );
+  border-radius: 6px;
+  padding: clamp(18px, 3vw, 36px) clamp(20px, 3.5vw, 44px);
+  box-shadow:
+    0 8px 40px rgba(80, 50, 40, 0.2),
+    0 2px 8px rgba(80, 50, 40, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(200, 180, 160, 0.3);
+  position: relative;
+  overflow: hidden;
+  max-height: 94vh;
+  overflow-y: auto;
+}
+
+/* Subtle aged-edge vignette */
+.modal__letter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  box-shadow: inset 0 0 60px rgba(180, 155, 130, 0.15);
+  pointer-events: none;
+}
+
+/* Fold line accent */
+.modal__letter::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(170, 145, 120, 0.1) 20%,
+    rgba(170, 145, 120, 0.08) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Elegant scrollbar inside modal letter */
+.modal__letter::-webkit-scrollbar {
+  width: 4px;
+}
+.modal__letter::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal__letter::-webkit-scrollbar-thumb {
+  background: rgba(180, 155, 130, 0.25);
+  border-radius: 2px;
+}
+
+.modal__letter-inner {
+  line-height: 1.65;
+  font-size: clamp(0.78rem, 1.5vw, 1rem);
+  font-weight: 400;
+  color: var(--text-dark);
+  letter-spacing: 0.01em;
+}
+
+.modal__letter-inner p {
+  margin-bottom: 0.7em;
+}
+
+.modal__letter-inner p:last-child {
+  margin-bottom: 0;
+}
+
+/* Shared letter typography */
+.letter__greeting {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 500;
+  color: var(--red-soft);
+  margin-bottom: 0.55em !important;
+}
+
+.letter__closing {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05em;
+  color: var(--text-medium);
+  margin-top: 0.3em;
+}
+
+.letter__signature {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-light);
+  font-size: 1em;
+  margin-top: -0.2em !important;
+}
+
+/* ===================================================
+   MUSIC BUTTON
+   =================================================== */
+.music-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(255, 250, 247, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.music-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+}
+
+.music-btn:hover {
+  background: rgba(255, 250, 247, 0.25);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.music-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.music-btn__icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.music-btn.playing .music-btn__icon {
+  animation: musicPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.2); }
+}
+
+.music-btn__label {
+  font-size: 0.8rem;
+}
+
+/* ===================================================
+   RESPONSIVENESS
+   =================================================== */
+@media (max-width: 768px) {
+  .letter-box {
+    padding: 36px 40px;
+  }
+
+  .modal__letter-inner {
+    font-size: clamp(0.72rem, 2.5vw, 0.92rem);
+    line-height: 1.6;
+  }
+
+  .modal__letter-inner p {
+    margin-bottom: 0.65em;
+  }
+
+  .letter__greeting {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    margin-bottom: 0.5em !important;
+  }
+
+  .modal__letter {
+    padding: clamp(18px, 4vw, 28px) clamp(18px, 4vw, 28px);
+  }
+
+  :root {
+    --overlay-blur: 1px;
+  }
+
+  .music-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .letter-box {
+    padding: 28px 32px;
+  }
+
+  .letter-box__icon {
+    font-size: 2.2rem;
+  }
+
+  .modal {
+    width: 96vw;
+    max-height: 94vh;
+  }
+
+  .modal__letter {
+    max-height: 90vh;
+  }
+
+  .modal__letter-inner {
+    font-size: 0.72rem;
+    line-height: 1.55;
+  }
+
+  .modal__letter-inner p {
+    margin-bottom: 0.5em;
+  }
+
+  .music-btn__label {
+    display: none;
+  }
+
+  .music-btn {
+    padding: 10px 14px;
+    border-radius: 50%;
+  }
+}
+
+/* Very small phones */
+@media (max-height: 650px) {
+  .modal__letter-inner {
+    font-size: 0.68rem;
+    line-height: 1.5;
+  }
+
+  .modal__letter-inner p {
+    margin-bottom: 0.4em;
+  }
+
+  .letter__greeting {
+    font-size: 1rem;
+    margin-bottom: 0.4em !important;
+  }
+
+  .modal__letter {
+    padding: 16px 18px;
+  }
+}
+
+/* ===================================================
+   SCROLLBAR (global subtle)
+   =================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 140, 140, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 140, 140, 0.5);
+}
+
+/* ===================================================
+   SELECTION
+   =================================================== */
+::selection {
+  background: var(--pink-blush);
+  color: var(--text-dark);
+}

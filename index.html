@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 20th Birthday Tanya ❤️</title>
+  <meta name="description" content="A personal birthday tribute for Tanya — a digital letter filled with warmth, memories, and love.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ LANDING SCREEN ============ -->
+  <div id="landing" class="landing">
+    <div class="landing__content">
+      <h1 class="landing__title">Happy 20th Birthday</h1>
+      <h2 class="landing__name">Tanya <span class="heart">❤️</span></h2>
+    </div>
+  </div>
+
+  <!-- ============ MAIN WEBSITE ============ -->
+  <div id="main" class="main">
+
+    <!-- Background Slideshow -->
+    <div class="slideshow" id="slideshow">
+      <div class="slideshow__track" id="slideshowTrack">
+        <!-- Images injected by JS -->
+      </div>
+      <div class="slideshow__overlay"></div>
+    </div>
+
+    <!-- Floating Texture Particles (injected by JS) -->
+    <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+
+    <!-- Letter Box (Click to Open) -->
+    <div class="letter-box" id="letterBox">
+      <div class="letter-box__icon">💌</div>
+      <p class="letter-box__text">A letter for you, Tanya</p>
+      <p class="letter-box__hint">tap to open</p>
+    </div>
+
+  </div>
+
+  <!-- ============ LETTER MODAL ============ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal__close" id="modalClose" aria-label="Close letter">✕</button>
+      <div class="modal__letter">
+        <div class="modal__letter-inner">
+
+          <p class="letter__greeting">Tanya,</p>
+
+          <p>Happy 20th Birthday, little sister ❤️</p>
+
+          <p>I honestly don't know where to start, but today just feels like the perfect day to tell you how much you mean to me.</p>
+
+          <p>It's been around 1.5 years since we met, and it still surprises me how someone I started talking to in the second semester became such an important part of my life by the fourth semester. From just classmates to this bond—we've really come a long way.</p>
+
+          <p>You're truly like my little sister. The kind of person I feel protective about, the kind of person I genuinely want to see happy all the time. And on your birthday, that's all I wish for—that you stay happy, peaceful, and stress-free.</p>
+
+          <p>I know you take stress over small things sometimes, and I've seen that closely. But I've also seen how strong and genuine you are. Just remember, you don't have to be perfect in everything. You're already amazing the way you are.</p>
+
+          <p>Some of the best moments I've had are with you—those random burger and momos treats. It's funny how such simple things turn into such special memories.</p>
+
+          <p>And I really want to thank you for something I don't say often. During my breakup, when things were not okay, you were there. You listened, supported me, and made me feel like everything will be fine.</p>
+
+          <p>You're one of those rare people with whom I can talk freely without thinking twice.</p>
+
+          <p>And yeah, I know sometimes I might seem selfish. But trust me, I care for you a lot.</p>
+
+          <p>No matter what happens, you'll always be my little sister, and I'll always be there for you.</p>
+
+          <p>Enjoy your day. Eat lots of burgers and momos 😄</p>
+
+          <p class="letter__closing">Happy Birthday once again, Tanya 🎂</p>
+
+          <p class="letter__signature">– Your annoying but always caring brother</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MUSIC CONTROL ============ -->
+  <!-- Replace "music/bg-music.mp3" with your actual music file -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music/bg-music.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-btn" id="musicBtn" aria-label="Toggle music">
+    <span class="music-btn__icon" id="musicIcon">♪</span>
+    <span class="music-btn__label" id="musicLabel">Play Music</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
