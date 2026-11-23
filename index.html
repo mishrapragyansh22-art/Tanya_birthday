@@ -3,98 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy 20th Birthday Tanya ❤️</title>
-  <meta name="description" content="A personal birthday tribute for Tanya — a digital letter filled with warmth, memories, and love.">
+  <title>Congratulations, Graduate | Dedicated to Ananya</title>
+  <meta name="description" content="A personal graduation tribute dedicated to Ananya.">
 
-  <!-- Fonts -->
+  <!-- Fonts: Refined Serif & Clean Modern Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ============ LANDING SCREEN ============ -->
-  <div id="landing" class="landing">
-    <div class="landing__content">
-      <h1 class="landing__title">Happy 20th Birthday</h1>
-      <h2 class="landing__name">Tanya <span class="heart">❤️</span></h2>
+  <!-- ================= STAGE 0: PROMPT TO PLAY SONG & START ================= -->
+  <section id="startScreen" class="start-screen" aria-label="Start tribute">
+    <div class="start-content">
+      <p class="start-tag">A tribute for Ananya</p>
+      <button id="startBtn" class="start-btn" aria-label="Play song and start website">
+        <svg class="start-btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <span>Play Song & Enter</span>
+      </button>
+      <p class="start-hint">Sound on recommended</p>
     </div>
-  </div>
+  </section>
 
-  <!-- ============ MAIN WEBSITE ============ -->
-  <div id="main" class="main">
+  <!-- ================= STAGE 1: BLACK SCREEN ================= -->
+  <section id="introStage" class="intro-stage" aria-label="Introduction">
+    <div class="intro-content">
+      <h1 class="intro-title">Hello, Graduate.</h1>
+    </div>
+  </section>
 
-    <!-- Background Slideshow -->
-    <div class="slideshow" id="slideshow">
-      <div class="slideshow__track" id="slideshowTrack">
-        <!-- Images injected by JS -->
+  <!-- ================= STAGE 2: PERSONAL VIDEO ================= -->
+  <section id="videoStage" class="video-stage" aria-label="Personal Video">
+    <div class="video-container">
+      <video id="personalVideo" class="personal-video" playsinline preload="auto">
+        <source src="assets/vdo.mp4" type="video/mp4">
+        <source src="images/vdo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button id="videoSoundBtn" class="video-sound-btn" aria-label="Unmute video" style="display: none;">
+        <svg class="sound-icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+        </svg>
+        <svg class="sound-icon-active" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <span class="video-sound-label">Unmute</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= STAGE 3: MAIN WEBSITE ================= -->
+  <main id="mainStage" class="main-stage" role="main">
+
+    <!-- Ambient Photo Slideshow Background -->
+    <div class="slideshow" id="slideshow" aria-hidden="true">
+      <div class="slideshow-track" id="slideshowTrack">
+        <!-- Injected via JavaScript -->
       </div>
-      <div class="slideshow__overlay"></div>
+      <div class="slideshow-overlay"></div>
     </div>
 
-    <!-- Floating Texture Particles (injected by JS) -->
-    <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+    <!-- Main Tribute Content -->
+    <div class="tribute-wrapper">
+      <header class="tribute-header">
+        <span class="tribute-tag">Class of 2026</span>
+        <h2 class="tribute-name">Ananya</h2>
+        <p class="tribute-caption">A quiet gesture of admiration and warm wishes on your graduation.</p>
+      </header>
 
-    <!-- Letter Box (Click to Open) -->
-    <div class="letter-box" id="letterBox">
-      <div class="letter-box__icon">💌</div>
-      <p class="letter-box__text">A letter for you, Tanya</p>
-      <p class="letter-box__hint">tap to open</p>
-    </div>
-
-  </div>
-
-  <!-- ============ LETTER MODAL ============ -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal" id="modal">
-      <button class="modal__close" id="modalClose" aria-label="Close letter">✕</button>
-      <div class="modal__letter">
-        <div class="modal__letter-inner">
-
-          <p class="letter__greeting">Tanya,</p>
-
-          <p>Happy 20th Birthday, little sister ❤️</p>
-
-          <p>I honestly don't know where to start, but today just feels like the perfect day to tell you how much you mean to me.</p>
-
-          <p>It's been around 1.5 years since we met, and it still surprises me how someone I started talking to in the second semester became such an important part of my life by the fourth semester. From just classmates to this bond—we've really come a long way.</p>
-
-          <p>You're truly like my little sister. The kind of person I feel protective about, the kind of person I genuinely want to see happy all the time. And on your birthday, that's all I wish for—that you stay happy, peaceful, and stress-free.</p>
-
-          <p>I know you take stress over small things sometimes, and I've seen that closely. But I've also seen how strong and genuine you are. Just remember, you don't have to be perfect in everything. You're already amazing the way you are.</p>
-
-          <p>Some of the best moments I've had are with you—those random burger and momos treats. It's funny how such simple things turn into such special memories.</p>
-
-          <p>And I really want to thank you for something I don't say often. During my breakup, when things were not okay, you were there. You listened, supported me, and made me feel like everything will be fine.</p>
-
-          <p>You're one of those rare people with whom I can talk freely without thinking twice.</p>
-
-          <p>And yeah, I know sometimes I might seem selfish. But trust me, I care for you a lot.</p>
-
-          <p>No matter what happens, you'll always be my little sister, and I'll always be there for you.</p>
-
-          <p>Enjoy your day. Eat lots of burgers and momos 😄</p>
-
-          <p class="letter__closing">Happy Birthday once again, Tanya 🎂</p>
-
-          <p class="letter__signature">– Your annoying but always caring brother</p>
-
+      <!-- Minimal Note Card (Click to Open) -->
+      <div class="note-card" id="noteCard" role="button" tabindex="0" aria-haspopup="dialog" aria-expanded="false" aria-label="Open personal letter for Ananya">
+        <div class="note-card-inner">
+          <div class="note-card-meta">
+            <span class="note-card-label">Personal Note</span>
+            <span class="note-card-indicator">Click to read</span>
+          </div>
+          <h3 class="note-card-title">Dear Pathagoobi</h3>
+          <p class="note-card-snippet">Some people leave a little mark on our lives without even realising it, and I guess you're one of them...</p>
         </div>
       </div>
     </div>
+
+  </main>
+
+  <!-- ================= LETTER MODAL ================= -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalLetterTitle">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close letter">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <article class="letter-sheet">
+        <div class="letter-sheet-header">
+          <span class="letter-date">Graduation Day</span>
+          <span class="letter-for">For Ananya</span>
+        </div>
+
+        <div class="letter-sheet-body">
+          <h2 id="modalLetterTitle" class="letter-greeting">Dear Pathagoobi,</h2>
+
+          <p>Some people leave a little mark on our lives without even realising it, and I guess you're one of them.</p>
+
+          <p>We may not have talked much or shared countless memories, but I've always had a special kind of respect and admiration for you. Somewhere between my random teasing, occasional jokes about liking you, and our little interactions, you became someone I genuinely wished the best for.</p>
+
+          <p>You probably don't know this, but you're one of the reasons I started dancing at university. Seeing you dance inspired me to give it a try, and I'll always be grateful for that.</p>
+
+          <p>I've always found you incredibly sweet and beautiful, and even though I maintained my boundaries as your junior, I've always wished nothing but good things for you.</p>
+
+          <p>Now that you've graduated, I hope life brings you endless happiness, success, and opportunities. May you achieve everything you've ever dreamed of and keep smiling wherever life takes you.</p>
+
+          <p>Thank you for being a small but special part of my university journey.</p>
+
+          <p class="letter-promise">And lastly, one little promise: Once I graduate, I'm definitely going to propose to you. So better be prepared! 😂💍</p>
+
+          <p class="letter-closing">Congratulations, Graduate! ❤️</p>
+        </div>
+      </article>
+    </div>
   </div>
 
-  <!-- ============ MUSIC CONTROL ============ -->
-  <!-- Replace "music/bg-music.mp3" with your actual music file -->
+  <!-- ================= BACKGROUND MUSIC CONTROL ================= -->
   <audio id="bgMusic" loop preload="auto">
+    <source src="music/SHARMEELI - Frappe Ash.mp3" type="audio/mpeg">
     <source src="music/bg-music.mp3" type="audio/mpeg">
+    <source src="assets/music.mp3" type="audio/mpeg">
   </audio>
-  <button class="music-btn" id="musicBtn" aria-label="Toggle music">
-    <span class="music-btn__icon" id="musicIcon">♪</span>
-    <span class="music-btn__label" id="musicLabel">Play Music</span>
-  </button>
+
+  <div class="music-controller" id="musicController" aria-label="Background music controls">
+    <button class="music-toggle-btn" id="musicToggleBtn" aria-label="Toggle background music">
+      <span class="music-icon" id="musicIconWrap">
+        <!-- SVG Play Icon (default) -->
+        <svg class="icon-play" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <!-- SVG Pause Icon -->
+        <svg class="icon-pause" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </span>
+      <span class="music-text" id="musicText">Play Music</span>
+    </button>
+  </div>
 
   <script src="script.js"></script>
 </body>
